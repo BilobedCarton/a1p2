@@ -131,7 +131,7 @@ int main() {
     t_true(a7->equals(temp_a));
     temp_a->reverse();
     for (size_t i = 0; i < a7->count(); i++) {
-        t_true(a7->get(i)->equals(temp_a->get(a7->count() - i)));
+        t_true(a7->get(i)->equals(temp_a->get(a7->count() - i - 1)));
     }
     t_true(temp_a->count() == 7);
 

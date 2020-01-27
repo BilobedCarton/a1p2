@@ -24,7 +24,7 @@
 - Return the object at the index or null
 ### Array* append(Object* obj);
 - Append a copy of the object to the end of this and return this
-### size_t index(const Object* obj);
+### int index(const Object* obj);
 - Return index of object in this or -1 if the object is not contained
 ### bool contains(const Object* obj);
 - Returns true if this contains object else false

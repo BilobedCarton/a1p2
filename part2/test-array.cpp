@@ -21,11 +21,11 @@ int main() {
     Object* a_obj = new String("a");
 
     Array* empty = new Array();
-    Array* a1_str = new Array()->append(a);
-    Array* a1_obj = new Array()->append(a_obj);
-    Array* a3 = new Array()->append(a)->append(b)->append(a_obj);
+    Array* a1_str = (new Array())->append(a);
+    Array* a1_obj = (new Array())->append(a_obj);
+    Array* a3 = (new Array())->append(a)->append(b)->append(a_obj);
     // Copy constructor
-    Array* a4 = new Array(a3)->append(b);
+    Array* a4 = (new Array(a3))->append(b);
     Array* a7 = new Array();
     Array* temp_a = new Array();
 

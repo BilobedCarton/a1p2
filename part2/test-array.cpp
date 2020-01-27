@@ -39,7 +39,7 @@ int main() {
     t_false(empty->equals(a_obj));
     t_false(empty->equals(a1_str));
     t_false(empty->equals(a1_obj));
-    t_true(a->equals(a1_obj));
+    t_true(a1_str->equals(a1_obj));
     t_false(a1_str->equals(a3));
 
     // count

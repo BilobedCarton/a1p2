@@ -25,7 +25,7 @@ class Array : public Object {
     // Append a copy of the object to the end of this and return this
     Array* append(Object* obj);
     // Return index of object in this or -1 if the object is not contained
-    size_t index(const Object* obj);
+    int index(const Object* obj);
     // Returns true if this contains object else false
     bool contains(const Object* obj);
     // Appends a copy of all items of the other array to this and returns this

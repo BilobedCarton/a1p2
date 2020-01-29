@@ -1,4 +1,4 @@
-// lang::CwC
+// lang::C++
 #include <iostream>
 #include "array.h"
 #include "string.h"
@@ -12,27 +12,22 @@ void t_false(bool p) {
     if (p) FAIL();
 }
 
-int main() {
-    // constructor
-    String* t1 = new String("t1");
-    String* t2 = new String("t2");
-    String* a = new String("a");
-    String* b = new String("b");
-    Object* a_obj = new String("a");
-
-    Array* empty = new Array();
-    Array* a1_str = (new Array())->append(a);
-    Array* a1_obj = (new Array())->append(a_obj);
-    Array* a3 = (new Array())->append(a)->append(b)->append(a_obj);
+template <class ArrayType, class ContainedType>
+void test(ContainedType t1, ContainedType t2, ContainedType a, ContainedType b,
+          ContainedType a_obj) {
+    ArrayType* empty = new ArrayType();
+    ArrayType* a1_str = (new ArrayType())->append(a);
+    ArrayType* a1_obj = (new ArrayType())->append(a_obj);
+    ArrayType* a3 = (new ArrayType())->append(a)->append(b)->append(a_obj);
     // Copy constructor
-    Array* a4 = (new Array(a3))->append(b);
-    Array* a7 = new Array();
-    Array* temp_a = new Array();
+    ArrayType* a4 = (new ArrayType(a3))->append(b);
+    ArrayType* a7 = new ArrayType();
+    ArrayType* temp_a = new ArrayType();
 
     // hash
     t_true(empty->hash() == 0);
-    t_true(a1_str->hash() == a->hash());
-    t_true(a3->hash() == a->hash() + b->hash() + a_obj->hash());
+    t_false(a1_str->hash() == a->hash());
+    t_true(a1_str->hash() == a1_obj->hash());
     OK("Hash tests passed");
 
     // equals
@@ -154,17 +149,44 @@ int main() {
     OK("Clear tests passed");
 
     // deconstructor
-    delete temp_a;
-    delete a4;
-    delete a3;
-    delete a1_obj;
-    delete a1_str;
     delete empty;
-    delete a_obj;
-    delete b;
-    delete a;
-    delete t2;
+    delete a1_str;
+    delete a1_obj;
+    delete a3;
+    delete a4;
+    delete a7;
+    delete temp_a;
+    
+}
+
+int main() {
+    // Array tests
+    String* t1 = new String("t1");
+    String* t2 = new String("t2");
+    String* a = new String("a");
+    String* b = new String("b");
+    Object* a_obj = new String("a");
+
+    test<Array, Object*>(t1, t2, a, b, a_obj);
+
     delete t1;
+    delete t2;
+    delete a;
+    delete b;
+    delete a_obj;
     OK("All Array tests passed");
+
+    // IntArray tests
+    test<IntArray, int>(1, 2, 3, 4, 3);
+    OK("All IntArray tests passed");
+
+    // FloatArray tests
+    test<FloatArray, float>(1.0, 2.0, 3.0, 4.0, 3.0);
+    OK("All FloatArray tests passed");
+
+    // BoolArray tests
+    test<BoolArray, bool>(true, false, false, true, false);
+    OK("All BoolArray tests passed");
+    OK("All tests passed");
     return 0;
 }

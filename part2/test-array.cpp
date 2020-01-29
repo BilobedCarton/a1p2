@@ -19,10 +19,6 @@ int main() {
     String* a = new String("a");
     String* b = new String("b");
     Object* a_obj = new String("a");
-    Boolean* b_true = new Boolean(true);
-    Boolean* b_false = new Boolean(false);
-    Float* f_float = new Float(2.0);
-    Integer* i_int = new Integer(1);
 
     Array* empty = new Array();
     Array* a1_str = (new Array())->append(a);
@@ -37,9 +33,6 @@ int main() {
     t_true(empty->hash() == 0);
     t_true(a1_str->hash() == a->hash());
     t_true(a3->hash() == a->hash() + b->hash() + a_obj->hash());
-    t_false(b_true->hash() == b_false->hash());
-    t_false(f_float->hash() == b_false->hash());
-    t_false(f_float->hash() == i_int->hash());
     OK("Hash tests passed");
 
     // equals
@@ -49,12 +42,6 @@ int main() {
     t_false(empty->equals(a1_obj));
     t_true(a1_str->equals(a1_obj));
     t_false(a1_str->equals(a3));
-    t_true(b_true->equals(b_true));
-    t_true(b_false->equals(b_false));
-    t_false(b_true->equals(b_false));
-    t_false(f_float->equals(b_false));
-    t_false(i_int->equals(b_false));
-    t_false(f_float->equals(i_int));
     OK("Equals tests passed");
 
     // count
@@ -166,20 +153,7 @@ int main() {
     t_true(temp_a->count() == 0);
     OK("Clear tests passed");
 
-    // bool, int, float supported in Array
-    temp_a->append(i_int)->append(f_float)->append(b_true)->append(b_false);
-    t_true(temp_a->get(0)->equals(i_int));
-    t_true(temp_a->get(1)->equals(f_float));
-    t_true(temp_a->get(2)->equals(b_true));
-    t_true(temp_a->get(3)->equals(b_false));
-    temp_a->clear();
-    OK("bool, int and float tests passed");
-
     // deconstructor
-    delete i_int;
-    delete f_float;
-    delete b_false;
-    delete b_true;
     delete temp_a;
     delete a4;
     delete a3;

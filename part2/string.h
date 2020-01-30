@@ -39,5 +39,6 @@ class String : public Object {
     }
 
     size_t hash() { return strlen(this->str); }
+    Object* clone() { return new String(str); }
     int cmp(String* other) { return strcmp(this->str, other->str); }
 };

@@ -56,9 +56,6 @@ void test(ContainedType t1, ContainedType t2, ContainedType a, ContainedType b,
     t_true(a3->get(1)->equals(b));
     t_true(a3->get(2)->equals(a_obj));
     t_true(a3->get(3) == nullptr);
-    t_false(a4->get(0)->equals(a));
-    t_false(a4->get(1)->equals(b));
-    t_false(a4->get(2)->equals(a_obj));
     t_true(a4->get(0)->equals(a));
     t_true(a4->get(1)->equals(b));
     t_true(a4->get(2)->equals(a_obj));

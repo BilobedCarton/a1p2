@@ -319,15 +319,15 @@ int main() {
     OK("All Array tests passed");
 
     // IntArray tests
-    test_primitive<IntArray, int>(1, 2, 3, 4, 3);
+    test_primitive<IntArray, int>(1, 2, 3, 4, 3, 0);
     OK("All IntArray tests passed");
 
     // FloatArray tests
-    test_primitive<FloatArray, float>(1.0, 2.0, 3.0, 4.0, 3.0);
+    test_primitive<FloatArray, float>(1.0, 2.0, 3.0, 4.0, 3.0, 0);
     OK("All FloatArray tests passed");
 
     // BoolArray tests
-    test_primitive<BoolArray, bool>(true, false, false, true, false);
+    test_primitive<BoolArray, bool>(true, false, false, true, false, false);
     OK("All BoolArray tests passed");
     OK("All tests passed");
     return 0;

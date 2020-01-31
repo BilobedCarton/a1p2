@@ -68,7 +68,7 @@ void test(ContainedType t1, ContainedType t2, ContainedType a, ContainedType b,
     t_true(a1_str->index(b) == -1);
     t_true(a3->index(a) == 0);
     t_true(a3->index(b) == 1);
-    t_true(a3->index(a_obj) == 2);
+    t_true(a3->index(a_obj) == 0);
     OK("Index tests passed");
 
     // contains
